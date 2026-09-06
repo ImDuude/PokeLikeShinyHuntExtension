@@ -16,6 +16,7 @@ async function injectHuntConfig(tabId, state) {
 }
 async function applyStateToTab(tabId, url, state) {
   if (!tabId || !isPokelikeUrl(url)) return;
+  await injectFile(tabId, "fast_reset.js");
   await injectHuntConfig(tabId, state);
   await injectFile(tabId, "pokedex_bridge.js");
   await injectFile(tabId, state.shinyHunt ? "shiny_hunt.js" : "shiny_stop.js");
