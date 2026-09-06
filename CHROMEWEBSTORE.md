@@ -6,11 +6,11 @@ Pokelike Shiny Hunt
 
 ## Version
 
-2.1.1
+2.2.0
 
 ## Short description
 
-Automatic shiny hunting for every run mode on pokelike.xyz.
+Automatic shiny hunting and Daily Pokésort assistance for pokelike.xyz.
 
 ## Detailed description
 
@@ -29,6 +29,8 @@ The built-in Pokémon selector includes:
 - Local reset counter
 
 The controls appear in the bottom-right of the game. Target settings are also available on the start page, while hunting can only be enabled during an active run. No popup configuration is required.
+
+The Daily Pokésort helper displays each Pokémon's generation, evolution stage, body color, and types above its sprite. A Solve button can arrange the complete puzzle automatically. For an already completed daily puzzle, the button shows Solved and remains disabled.
 
 Created and maintained by ImDuude:
 https://github.com/ImDuude

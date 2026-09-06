@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Pokelike Shiny Hunt",
-  "version": "2.1.1",
-  "description": "Automatic shiny hunting for pokelike.xyz.",
+  "version": "2.2.0",
+  "description": "Automatic shiny hunting and Daily Pokésort assistance for pokelike.xyz.",
   "permissions": [
     "storage",
     "scripting"

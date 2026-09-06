@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "2.1.1";
+  const VERSION = "2.2.0";
   const OPTIONS = { tickMs: 100, afterActionMs: 250, minResetGapMs: 500, storageKey: "pokelikeShinyHuntAttempts" };
 
   const visible = el => {

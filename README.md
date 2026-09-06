@@ -15,6 +15,8 @@ Tested with the latest Pokelike version: **v3.0.1**.
 - Adds compact hunt controls to the bottom-right in every game mode.
 - Keeps target selection available on the start page while disabling the hunt button until a run is active.
 - Stores settings and the reset counter locally in Chrome.
+- Shows each Daily Pokésort Pokémon's generation, evolution stage, body color, and type(s) in compact Pokelike-style cards.
+- Adds a **Solve** button above Daily Pokésort's Submit button and arranges the puzzle automatically.
 
 ## Install manually
 
@@ -39,6 +41,12 @@ Tested with the latest Pokelike version: **v3.0.1**.
 5. Leave the run open. The extension resets automatically until it finds a selected shiny, then stops and highlights the result.
 
 The compact target summary shows the number of selected Pokémon. Hover over it to see the full list. The hunt status and reset count appear only while hunting. Use **Reset counter** to clear the local reset count.
+
+### Daily Pokésort helper
+
+Open Daily Pokésort to see generation, evolution stage, body color, and all types in compact cards above every Pokémon. These are the attributes used by the puzzle; super-effective links are derived from the displayed types.
+
+Click **Solve** to arrange every Pokémon in the correct order, then use Pokelike's **Submit** button to finish the puzzle. If today's puzzle is already complete, the extension displays a disabled **Solved ✓** button instead.
 
 ## Updating
 
