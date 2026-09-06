@@ -1,11 +1,15 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const path = require("node:path");
 const vm = require("node:vm");
+
+const huntSource = fs.readFileSync(path.join(__dirname, "..", "shiny_hunt.js"), "utf8");
+const panelSource = fs.readFileSync(path.join(__dirname, "..", "content_bridge.js"), "utf8");
 
 async function run(targetPokemon, offers) {
   const timers = [];
   let resetClicked = false;
-  const badge = { style: {}, textContent: "" };
+  const badge = { style: {}, textContent: "", remove: () => {} };
   const reset = {
     classList: { contains: name => name === "nav-in-run" },
     getBoundingClientRect: () => ({ width: 20, height: 20 }),
@@ -28,19 +32,25 @@ async function run(targetPokemon, offers) {
   };
   context.window = context;
   context.__pokelikeShinyHuntConfig = { targetPokemon };
-  vm.runInNewContext(fs.readFileSync("shiny_hunt.js", "utf8"), context);
+  vm.runInNewContext(huntSource, context);
   await timers.shift()();
   return { status: context.__pokelikeShinyHunt.status(), resetClicked, badge };
 }
 
 function testSvgClickFallback() {
-  const source = require("node:fs").readFileSync("shiny_hunt.js", "utf8");
-  assert.match(source, /typeof el\.click === "function"/);
-  assert.match(source, /dispatchEvent\(new MouseEvent\("click"/);
+  assert.match(huntSource, /typeof el\.click === "function"/);
+  assert.match(huntSource, /dispatchEvent\(new MouseEvent\("click"/);
+}
+
+function testPanelSupportsEveryMode() {
+  assert.doesNotMatch(panelSource, /Challenge Stage/);
+  assert.match(panelSource, /Start a run to hunt/);
+  assert.doesNotMatch(panelSource, /pokelikeShinyHuntAttempts.*toggle/);
 }
 
 (async () => {
   testSvgClickFallback();
+  testPanelSupportsEveryMode();
   const found = await run("Alomomola", [
     { name: "Spheal", isShiny: true },
     { name: "Alomomola", speciesId: 594, isShiny: true }

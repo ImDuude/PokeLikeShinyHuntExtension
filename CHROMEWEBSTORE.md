@@ -2,19 +2,19 @@
 
 ## Extension name
 
-Pokelike Speed + Shiny Hunt
+Pokelike Shiny Hunt
 
 ## Version
 
-2.0.0
+2.1.0
 
 ## Short description
 
-Fast resets and automatic Challenge shiny starter hunting for pokelike.xyz.
+Automatic shiny hunting for every run mode on pokelike.xyz.
 
 ## Detailed description
 
-Pokelike Speed + Shiny Hunt adds compact controls directly to the Pokelike Challenge screen.
+Pokelike Shiny Hunt adds compact controls directly to Pokelike in every run mode.
 
 The extension reads offered Pokémon names and shiny status directly from the game's current state. It selects the Pokéball node, checks the available starters, and resets the run until one of your selected Pokémon appears as a shiny. When a match is found, the hunt stops and highlights it.
 
@@ -28,7 +28,7 @@ The built-in Pokémon selector includes:
 - Legendary and owned-shiny indicators
 - Local reset counter
 
-All controls appear in the bottom-right of the game after a Challenge starter has been selected. No popup configuration is required.
+The controls appear in the bottom-right of the game. Target settings are also available on the start page, while hunting can only be enabled during an active run. No popup configuration is required.
 
 Created and maintained by ImDuude:
 https://github.com/ImDuude
@@ -45,8 +45,7 @@ This extension does not collect, sell, or transmit personal data and does not us
 ## Permissions explanation
 
 - `storage`: Saves hunt settings, selected Pokémon, and the reset counter locally.
-- `scripting`: Injects the reset and shiny-hunt logic into pokelike.xyz.
-- `tabs`: Detects and updates the active Pokelike tab and reapplies settings after navigation.
+- `scripting`: Injects the shiny-hunt logic into pokelike.xyz.
 - Host access to `https://pokelike.xyz/*`: Restricts game integration to Pokelike.
 
 ## Suggested category

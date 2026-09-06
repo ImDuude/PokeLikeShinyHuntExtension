@@ -1,6 +1,6 @@
-# Pokelike Speed + Shiny Hunt
+# Pokelike Shiny Hunt
 
-An unofficial Chrome extension for [pokelike.xyz](https://pokelike.xyz/) that speeds up resets and automates shiny starter hunting in Challenge mode.
+An unofficial Chrome extension for [pokelike.xyz](https://pokelike.xyz/) that automates shiny hunting in every run mode.
 
 ## Features
 
@@ -10,7 +10,8 @@ An unofficial Chrome extension for [pokelike.xyz](https://pokelike.xyz/) that sp
 - Provides a searchable, scrollable Pokémon list with Select all and Deselect all controls.
 - Can show only missing shiny base forms and optionally exclude Legendary Pokémon.
 - Marks Legendary Pokémon and already-owned shinies in the list.
-- Adds compact hunt controls to the bottom-right of the game after a Challenge starter is selected.
+- Adds compact hunt controls to the bottom-right in every game mode.
+- Keeps target selection available on the start page while disabling the hunt button until a run is active.
 - Stores settings and the reset counter locally in Chrome.
 
 ## Install manually
@@ -29,13 +30,13 @@ An unofficial Chrome extension for [pokelike.xyz](https://pokelike.xyz/) that sp
 
 ## Usage
 
-1. Start Challenge mode and select a starter.
+1. Start any run mode and select a starter.
 2. Use the bottom-right **Settings** button to choose Pokémon from the list.
 3. Optionally enable **Missing shinies only** or **Ignore legendaries**.
 4. Save the selection and switch **Shiny Hunt** on.
-5. Leave the Challenge page open. The extension resets automatically until it finds a selected shiny, then stops and highlights the result.
+5. Leave the run open. The extension resets automatically until it finds a selected shiny, then stops and highlights the result.
 
-The compact target summary shows the number of selected Pokémon. Hover over it to see the full list. Use **Reset counter** to clear the local reset count.
+The compact target summary shows the number of selected Pokémon. Hover over it to see the full list. The hunt status and reset count appear only while hunting. Use **Reset counter** to clear the local reset count.
 
 ## Updating
 
@@ -43,7 +44,7 @@ Pull or download the newest files, click the reload button for the extension on 
 
 ## Troubleshooting
 
-- The controls appear only in Challenge mode after a starter has been selected.
+- On the start page, settings remain available but hunting cannot start until a run is active.
 - The Pokéball map node must be available for the hunt to continue.
 - Reload both the extension and the Pokelike tab after updating files.
 - Pokelike updates may change internal game data and temporarily break the extension.

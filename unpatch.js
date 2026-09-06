@@ -1,3 +1,0 @@
-(() => {
-  window.__pokelikeSpeedPatch?.disable?.();
-})();

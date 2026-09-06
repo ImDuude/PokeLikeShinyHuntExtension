@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "2.0.0";
+  const VERSION = "2.1.0";
   const OPTIONS = { tickMs: 100, afterActionMs: 250, minResetGapMs: 500, storageKey: "pokelikeShinyHuntAttempts" };
 
   const visible = el => {
@@ -53,6 +53,10 @@
     badge.style.color = success ? "#ffd76b" : "#e0dcd0";
   }
 
+  function removeBadge() {
+    document.getElementById("pokelike-shiny-hunt-badge")?.remove();
+  }
+
   function createHunt() {
     let running = false;
     let timer;
@@ -99,6 +103,7 @@
           return schedule(OPTIONS.afterActionMs);
         }
       }
+      removeBadge();
       schedule(OPTIONS.tickMs);
     }
 
@@ -106,19 +111,18 @@
       start() {
         if (running) return;
         running = true;
-        setBadge(`Hunting ${targetLabel()}\n${attempts} reset(s)`);
         schedule(30);
         console.log(`[Pokelike Shiny Hunt] active v${VERSION}`, { targets: targetNames() });
       },
       stop(reason = "stopped") {
         running = false;
         clearTimeout(timer);
-        setBadge(`Shiny hunt ${reason}\n${attempts} reset(s)`);
+        removeBadge();
       },
       resetCounter() {
         attempts = 0;
         localStorage.setItem(OPTIONS.storageKey, "0");
-        setBadge("Counter reset");
+        if (document.getElementById("pokelike-shiny-hunt-badge")) setBadge("Counter reset");
       },
       debug() {
         const snapshot = {

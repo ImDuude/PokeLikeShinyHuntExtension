@@ -7,8 +7,7 @@
   const send = (message, callback = () => {}) => chrome.runtime.sendMessage(message, response => {
     if (!chrome.runtime.lastError && response && !response.error) callback(response);
   });
-  const isChallengeReady = () => /Challenge Stage/i.test(document.getElementById("map-info")?.textContent || "") &&
-    Boolean(document.querySelector("#team-bar .team-slot"));
+  const isRunReady = () => Boolean(document.querySelector("#team-bar .team-slot"));
   const selectedTargets = () => new Set(String(state.targetPokemon || "").split(";").map(name => name.trim()).filter(Boolean));
 
   function setSettingsOpen(panel, open) {
@@ -155,17 +154,13 @@
 
   function renderPanel() {
     let panel = document.getElementById(PANEL_ID);
-    if (!isChallengeReady()) {
-      panel?.remove();
-      return;
-    }
     panel ||= createPanel();
-    const attempts = localStorage.getItem("pokelikeShinyHuntAttempts") || "0";
     const toggle = panel.querySelector('[data-action="toggle"]');
-    const label = `Shiny Hunt: ${state.shinyHunt ? "ON" : "OFF"} · ${attempts}`;
+    const ready = isRunReady();
+    const label = ready ? `Shiny Hunt: ${state.shinyHunt ? "ON" : "OFF"}` : "Start a run to hunt";
     if (toggle.textContent !== label) toggle.textContent = label;
-    toggle.disabled = false;
-    toggle.classList.toggle("is-on", state.shinyHunt);
+    toggle.disabled = !ready;
+    toggle.classList.toggle("is-on", ready && state.shinyHunt);
     panel.querySelector('[data-action="settings"]').title = state.targetPokemon ? `Targets: ${state.targetPokemon}` : "Target: any shiny";
   }
 
