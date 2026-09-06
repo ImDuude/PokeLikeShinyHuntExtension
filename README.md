@@ -2,6 +2,8 @@
 
 An unofficial Chrome extension for [pokelike.xyz](https://pokelike.xyz/) that automates shiny hunting in every run mode.
 
+Tested with the latest Pokelike version: **v3.0.1**.
+
 ## Features
 
 - Reads the offered Pokémon name and `isShiny` value directly from the game's state instead of using image recognition.
