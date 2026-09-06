@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "2.2.0";
+  const VERSION = "2.2.1";
   const OPTIONS = { tickMs: 100, afterActionMs: 250, minResetGapMs: 500, storageKey: "pokelikeShinyHuntAttempts" };
 
   const visible = el => {
@@ -72,14 +72,18 @@
         const offers = catchOffers();
         if (!offers.length) return schedule(OPTIONS.tickMs);
         lastOffers = offers.map(pokemon => ({ name: pokemon.name, speciesId: pokemon.speciesId, isShiny: pokemon.isShiny === true }));
-        const match = offers.find(matchesTarget);
+        const previousFoundOffers = window.__pokelikeShinyHuntLastFoundOffers === offers;
+        if (previousFoundOffers) delete window.__pokelikeShinyHuntLastFoundOffers;
+        const match = previousFoundOffers ? null : offers.find(matchesTarget);
         if (match) {
           running = false;
           clearTimeout(timer);
+          window.__pokelikeShinyHuntLastFoundOffers = offers;
           setBadge(`✨ ${match.name} shiny found!\n${attempts} reset(s)`, true);
           const card = [...document.querySelectorAll("#catch-choices .poke-card")]
             .find(el => normalizeName(el.querySelector(".poke-name")?.textContent) === normalizeName(match.name));
           if (card) card.style.outline = "4px solid gold";
+          document.dispatchEvent(new Event("pokelike-shiny-found"));
           console.log("[Pokelike Shiny Hunt] Matching shiny found", match);
           return;
         }

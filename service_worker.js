@@ -24,6 +24,11 @@ async function applyStateToTab(tabId, url, state) {
 }
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   (async () => {
+    if (message.type === "STOP_SHINY_HUNT_FROM_PAGE") {
+      const next = { ...await getState(), shinyHunt: false };
+      await chrome.storage.local.set(next);
+      return sendResponse(next);
+    }
     if (message.type === "TOGGLE_SHINY_HUNT_FROM_PAGE") {
       const current = await getState();
       const next = { ...current, shinyHunt: !current.shinyHunt };

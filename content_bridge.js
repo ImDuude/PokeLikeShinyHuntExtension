@@ -161,6 +161,7 @@
     if (toggle.textContent !== label) toggle.textContent = label;
     toggle.disabled = !ready;
     toggle.classList.toggle("is-on", ready && state.shinyHunt);
+    panel.querySelector('[data-action="counter"]').hidden = !ready;
     panel.querySelector('[data-action="settings"]').title = state.targetPokemon ? `Targets: ${state.targetPokemon}` : "Target: any shiny";
   }
 
@@ -176,6 +177,9 @@
       delete document.documentElement.dataset.pokelikePokedex;
       renderPokemonList();
     } catch {}
+  });
+  document.addEventListener("pokelike-shiny-found", () => {
+    send({ type: "STOP_SHINY_HUNT_FROM_PAGE" }, next => { state = next; renderPanel(); });
   });
   new MutationObserver(renderPanel).observe(document.documentElement, { childList: true, subtree: true });
   setInterval(renderPanel, 500);

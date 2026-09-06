@@ -38,7 +38,7 @@ Tested with the latest Pokelike version: **v3.0.1**.
 2. Use the bottom-right **Settings** button to choose Pokémon from the list.
 3. Optionally enable **Missing shinies only** or **Ignore legendaries**.
 4. Save the selection and switch **Shiny Hunt** on.
-5. Leave the run open. The extension resets automatically until it finds a selected shiny, then stops and highlights the result.
+5. Leave the run open. The extension resets automatically until it finds a selected shiny, then switches the hunt off and highlights the result. Turning the hunt on again continues with a fresh reset.
 
 The compact target summary shows the number of selected Pokémon. Hover over it to see the full list. The hunt status and reset count appear only while hunting. Use **Reset counter** to clear the local reset count.
 
